@@ -1,0 +1,30 @@
+{
+  "name": "bouncer",
+  "version": "0.1.0",
+  "description": "A bouncer proxy for zilliqa metatransactions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/starling-foundries/bouncer.js.git"
+  },
+  "keywords": [
+    "zilliqa",
+    "bouncer",
+    "metatransactions",
+    "blockchain"
+  ],
+  "author": "Cameron Sajedi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/starling-foundries/bouncer.js/issues"
+  },
+  "homepage": "https://github.com/starling-foundries/bouncer.js#readme",
+  "dependencies": {
+    "@zilliqa-js/zilliqa": "^0.7.3",
+    "bn.js": "^5.0.0",
+    "tslib": "^1.10.0"
+  }
+}
