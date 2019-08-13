@@ -29,7 +29,7 @@ const zilliqa = new Zilliqa("https://dev-api.zilliqa.com/");
 const CHAIN_ID = 333;
 const MSG_VERSION = 1;
 const VERSION = pack(CHAIN_ID, MSG_VERSION);
-
+console.log(VERSION);
 // Populate the wallet with an account
 const privkey = '3375F915F3F9AE35E6B301B7670F53AD1A5BE15D8221EC7FD5E503F21D3450C8';
 
@@ -40,7 +40,8 @@ zilliqa.wallet.addByPrivateKey(
 const address = CP.getAddressFromPrivateKey(privkey);
 console.log("Your account address is:");
 console.log(`${address}`);
-
+const pubk = CP.toBech32Address(address);
+console.log(pubk);
 async function testBlockchain() {
   try {
 
@@ -61,7 +62,6 @@ async function testBlockchain() {
         version: VERSION,
         toAddr: "zil12ulvje3ceza3cwrrj3szu9rqvd8s9tw69c978p",
         nonce: 332,
-        pubkey: "0x8254b2C9aCdf181d5d6796d63320fBb20D4Edd12",
         amount: new BN(units.toQa("1", units.Units.Zil)), // Sending an amount in Zil (1) and converting the amount to Qa
         gasPrice: myGasPrice, // Minimum gasPrice veries. Check the `GetMinimumGasPrice` on the blockchain
         gasLimit: Long.fromNumber(1)

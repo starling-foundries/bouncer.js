@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/starling-foundries/bouncer.js#readme",
   "dependencies": {
-    "@zilliqa-js/zilliqa": "^0.7.3",
+    "@zilliqa-js/zilliqa": "^0.7.5",
     "bn.js": "^5.0.0",
     "tslib": "^1.10.0"
   }
