@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package starlingfoundries.operator.server;
+
+// ============================================================================
+// Primitives
+// ============================================================================
+service Operator {
+    //sends the signed transaction from the client to the operator.
+    rpc SendCheck(CheckTransaction) returns (queueID);
+    //retrieves the transaction information from the perspective of the operator
+    rpc Status(queueID) returns (StatusResp);
+    // rpc RevokeOperator(Empty) returns (StatusResp); 
+    //Gets the status of the last transaction sent by this user to this operator
+    rpc GetLastTransaction(Client) returns (StatusResp);
+    rpc OperatorTarget(Empty) returns (OperatorTargetResp);
+    rpc GetMinFee(Empty) returns (FeeResp);
+    
+}
+message ByteArray
+{
+    bytes data                 = 1;
+}
+message Client {
+    ByteArray key              = 1;
+}
+message StatusResp
+{
+    ByteArray sender_pkey               = 1;
+    //tranid should be the chain-addressable transaction id for use in ex: viewblock.io
+    bytes tranid                        = 2;
+    enum Status {
+        UNDEFINED                       = 0;
+        RECIEVED                        = 1;
+        PROCESSED                       = 2;
+        REJECTED                        = 3;     
+    }   
+    Status status                       = 3;
+    uint64 nonce                        = 4;
+}
+//Empty only requires the calling user's pubkey
+message Empty {
+    ByteArray pubkey                    = 1;
+}
+
+message queueID
+{
+    uint32 queueID                    = 1;
+}
+//this object is injected straight into the code field of the encapsulating transaction
+message CheckTransaction
+{
+    uint32 version         = 1;
+    ByteArray senderpubkey = 2;
+    bytes toaddr           = 3;
+    ByteArray amount       = 4;
+    ByteArray fee          = 5;
+    bytes operatorAddr     = 6;
+    //this nonce is account-specific within the scilla contract. The encapsulating transaction will have a nonce from the operator's wallet.
+    uint64 nonce           = 7;
+    ByteArray signature    = 8;
+}
+
+message OperatorTargetResp
+{
+    bytes contractAddr          = 1;
+}
+
+message FeeResp
+{
+    ByteArray fee                  = 1;
+}
