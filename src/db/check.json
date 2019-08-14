@@ -1,0 +1,12 @@
+{
+    "CheckTransaction":{
+        "number": 1,
+        "pubkey": "2",
+        "toaddr": "2",
+        "amount": 10,
+        "fee": 2,
+        "target": "",
+        "nonce": 1,
+        "signature": ""
+    }
+}
