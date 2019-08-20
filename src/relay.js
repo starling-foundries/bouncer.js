@@ -59,14 +59,14 @@ class Relay {
                     type: "String",
                     value: "Hello World"
                 },
-                
+
                 {
                     vname: "operatorData",
                     type: "String",
                     value: "Hello World"
                 },
-                
-                
+
+
             ],
             {
                 // amount, gasPrice and gasLimit must be explicitly provided
@@ -112,14 +112,14 @@ class Relay {
                     type: "ByStr20",
                     value: "Hello World"
                 },
-                
+
                 {
                     vname: "signature",
                     type: "ByStr33",
                     value: "Hello World"
                 },
-                
-                
+
+
             ],
             {
                 // amount, gasPrice and gasLimit must be explicitly provided
@@ -130,5 +130,16 @@ class Relay {
             }
         );
     }
+    isValidPublicKey(pubkey){
+        return false;
+    }
+    signatureMatch(pubkey, sig){
+        return false;
+    }
 
 }
+module.exports = {
+    isValidPublicKey,
+    signatureMatch,
+    Relay
+};
