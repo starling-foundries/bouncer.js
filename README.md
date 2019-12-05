@@ -12,9 +12,9 @@ A simple, generic node-based metatransactions bouncer intended to embed in a ser
 
 To install this, you need to have node LTS and the requirements listed in `zilliqa/zilliqa-javascript-sdk`. Then:
 *  clone this repo
-*  run `npm install`  
+*  run `yarn install`  
 *  `cp .env_example .env` 
 *  edit the .env to include your contract details
-*  `npm run` will start the server
+*  `yarn run` will start the server
 
 An example client can be used to test your relay and extended with full browser support. see `/src/client`.
